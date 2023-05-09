@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HousePricePrediction package &mdash; MLE Training 0.3 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MLE Training
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">HousePricePrediction package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-HousePricePrediction.configure_logging">HousePricePrediction.configure_logging module</a></li>
+<li><a class="reference internal" href="#module-HousePricePrediction.ingest_data">HousePricePrediction.ingest_data module</a></li>
+<li><a class="reference internal" href="#module-HousePricePrediction.score">HousePricePrediction.score module</a></li>
+<li><a class="reference internal" href="#module-HousePricePrediction.train">HousePricePrediction.train module</a></li>
+<li><a class="reference internal" href="#module-HousePricePrediction">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MLE Training</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HousePricePrediction package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/HousePricePrediction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="housepriceprediction-package">
+<h1>HousePricePrediction package<a class="headerlink" href="#housepriceprediction-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-HousePricePrediction.configure_logging">
+<span id="housepriceprediction-configure-logging-module"></span><h2>HousePricePrediction.configure_logging module<a class="headerlink" href="#module-HousePricePrediction.configure_logging" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.configure_logging.configure_logger">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.configure_logging.</span></span><span class="sig-name descname"><span class="pre">configure_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">console</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEBUG'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/configure_logging.html#configure_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.configure_logging.configure_logger" title="Permalink to this definition"></a></dt>
+<dd><p>Function to setup configurations of logger through function.</p>
+<p>The individual arguments of <cite>log_file</cite>, <cite>console</cite>, <cite>log_level</cite> will overwrite the ones in cfg.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>logger:</dt><dd><p>Predefined logger object if present. If None a ew logger object will be created from root.</p>
+</dd>
+<dt>cfg: dict()</dt><dd><p>Configuration of the logging to be implemented by default</p>
+</dd>
+<dt>log_file: str</dt><dd><p>Path to the log file for logs to be stored</p>
+</dd>
+<dt>console: bool</dt><dd><p>To include a console handler(logs printing in console)</p>
+</dd>
+<dt>log_level: str</dt><dd><p>One of <cite>[“INFO”,”DEBUG”,”WARNING”,”ERROR”,”CRITICAL”]</cite>
+default - <cite>“DEBUG”</cite></p>
+</dd>
+</dl>
+</div></blockquote>
+<p>logging.Logger</p>
+</dd></dl>
+
+</section>
+<section id="module-HousePricePrediction.ingest_data">
+<span id="housepriceprediction-ingest-data-module"></span><h2>HousePricePrediction.ingest_data module<a class="headerlink" href="#module-HousePricePrediction.ingest_data" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.ingest_data.fetch_housing_data">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.ingest_data.</span></span><span class="sig-name descname"><span class="pre">fetch_housing_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">housing_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">housing_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/ingest_data.html#fetch_housing_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.ingest_data.fetch_housing_data" title="Permalink to this definition"></a></dt>
+<dd><p>Download the dataset from URL and save in the given path</p>
+<dl class="simple">
+<dt>housing_url<span class="classifier">str</span></dt><dd><p>The URL to the dataset</p>
+</dd>
+<dt>housing_path<span class="classifier">str</span></dt><dd><p>Path to save the downloaded dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.ingest_data.load_housing_data">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.ingest_data.</span></span><span class="sig-name descname"><span class="pre">load_housing_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">housing_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/ingest_data.html#load_housing_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.ingest_data.load_housing_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load the dataset as Pandas dataframe and return</p>
+<dl class="simple">
+<dt>housing_path<span class="classifier">str</span></dt><dd><p>Path to the csv file</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Pandas Dataframe</dt><dd><p>The loaded dataframe object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.ingest_data.main">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.ingest_data.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/ingest_data.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.ingest_data.main" title="Permalink to this definition"></a></dt>
+<dd><p>To call transform data function with the command line args</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.ingest_data.parse_args">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.ingest_data.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/ingest_data.html#parse_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.ingest_data.parse_args" title="Permalink to this definition"></a></dt>
+<dd><p>Function to parse the arguments</p>
+<dl class="simple">
+<dt>Args</dt><dd><p>Returns the arguments that are added in the argument parser</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.ingest_data.transform_data">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.ingest_data.</span></span><span class="sig-name descname"><span class="pre">transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/ingest_data.html#transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.ingest_data.transform_data" title="Permalink to this definition"></a></dt>
+<dd><p>Transform the raw data into train and test and save them</p>
+<dl class="simple">
+<dt>data_folder<span class="classifier">_str</span></dt><dd><p>Path to the raw data</p>
+</dd>
+<dt>output_folder<span class="classifier">str</span></dt><dd><p>Path to save the processed data</p>
+</dd>
+<dt>args<span class="classifier">str</span></dt><dd><p>command line arguments</p>
+</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+</section>
+<section id="module-HousePricePrediction.score">
+<span id="housepriceprediction-score-module"></span><h2>HousePricePrediction.score module<a class="headerlink" href="#module-HousePricePrediction.score" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.score.parse_args">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.score.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/score.html#parse_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.score.parse_args" title="Permalink to this definition"></a></dt>
+<dd><p>Function to parse the arguments</p>
+<dl class="simple">
+<dt>Args</dt><dd><p>Returns the arguments that are added in the argument parser</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.score.predict_score">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.score.</span></span><span class="sig-name descname"><span class="pre">predict_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processed_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/score.html#predict_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.score.predict_score" title="Permalink to this definition"></a></dt>
+<dd><p>This function returns the scores of the given model</p>
+<dl class="simple">
+<dt>processed_path<span class="classifier">str</span></dt><dd><p>Path to the processed test data</p>
+</dd>
+<dt>model_path<span class="classifier">str</span></dt><dd><p>Path to the ML model pickle</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-HousePricePrediction.train">
+<span id="housepriceprediction-train-module"></span><h2>HousePricePrediction.train module<a class="headerlink" href="#module-HousePricePrediction.train" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.train.main">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.train.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/train.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.train.main" title="Permalink to this definition"></a></dt>
+<dd><p>Main function to parse arguments and train models</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.train.parse_args">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.train.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/train.html#parse_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.train.parse_args" title="Permalink to this definition"></a></dt>
+<dd><p>Function to parse the arguments</p>
+<dl class="simple">
+<dt>Args</dt><dd><p>Returns the arguments that are added in the argument parser</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="HousePricePrediction.train.train_models">
+<span class="sig-prename descclassname"><span class="pre">HousePricePrediction.train.</span></span><span class="sig-name descname"><span class="pre">train_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">housing_prepared</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">housing_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pkl_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HousePricePrediction/train.html#train_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#HousePricePrediction.train.train_models" title="Permalink to this definition"></a></dt>
+<dd><p>This function trains various Machine learning models and save the model weights in pickle format</p>
+<dl class="simple">
+<dt>housing_prepared<span class="classifier">Pandas dataframe</span></dt><dd><p>The processed train data</p>
+</dd>
+<dt>housing_labels<span class="classifier">Pandas dataframe</span></dt><dd><p>Labels for train data</p>
+</dd>
+<dt>pkl_path<span class="classifier">str</span></dt><dd><p>Path to save the pickle files</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-HousePricePrediction">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-HousePricePrediction" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Madhumitha R.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

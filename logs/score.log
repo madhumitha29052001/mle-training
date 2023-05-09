@@ -1,0 +1,22 @@
+Downloading the Xtest and Ytest from processed path folder
+Downloading the Xtest and Ytest from processed path folder
+DecisionTreeRegressor(random_state=42) metrics:
+    Mean Squared Error: 5036707973.009206
+    Root Mean Squared Error: 70969.76802138504
+    r2 score: 0.6135016739779473
+    Mean absolute error: 45630.03439922481
+RandomForestRegressor(max_features=6, n_estimators=30, random_state=42) metrics:
+    Mean Squared Error: 2327565764.000324
+    Root Mean Squared Error: 48244.85220207772
+    r2 score: 0.8213912189642206
+    Mean absolute error: 32232.717280361758
+LinearRegression() metrics:
+    Mean Squared Error: 4477213162.344777
+    Root Mean Squared Error: 66911.98070857547
+    r2 score: 0.6564352347280717
+    Mean absolute error: 49228.61566495403
+RandomForestRegressor(max_features=7, n_estimators=180, random_state=42) metrics:
+    Mean Squared Error: 2207634941.1682367
+    Root Mean Squared Error: 46985.475853376614
+    r2 score: 0.8305942663736489
+    Mean absolute error: 31255.938526862617
