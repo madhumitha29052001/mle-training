@@ -1,7 +1,6 @@
 import mlflow
 import mlflow.sklearn
 from ingest_data import main as ingest_data_main
-from mlflow import MlflowClient
 from score import main as score_main
 
 # from HousePricePrediction.ingest_data import main as ingest_data_main
@@ -45,27 +44,7 @@ with mlflow.start_run(
     ) as child_run:
         mlflow.log_param("child3", "yes")
         output2 = score_main()
-    # with mlflow.start_run(
-    #     run_name="CHILD_RANDOMSEARCH_RANDOMFOREST",
-    #     description="RandomSearch RandomForest Regressor",
-    #     nested=True,
-    # ) as child_run:
-    #     mlflow.log_param("child3", "yes")
-    #     output2 = train.main("RandomSearch RandomForest Regressor")
-    # with mlflow.start_run(
-    #     run_name="CHILD_GRID_RANDOMFOREST",
-    #     description="GridSearchCV RandomForest Regressor",
-    #     nested=True,
-    # ) as child_run:
-    #     mlflow.log_param("child3", "yes")
-    #     output2 = train.main("GridSearchCV RandomForest Regressor")
 
-# client = MlflowClient()
-# result = client.create_model_version(
-# name="House-price-prediction-ml-models",
-# source="mlruns/0/d16076a3ec534311817565e6527539c0/artifacts/sklearn-model",
-# run_id=parent_run.info.run_id,
-# )
 
 print("parent run:")
 
@@ -74,10 +53,3 @@ print("description: {}".format(parent_run.data.tags.get("mlflow.note.content")))
 print("version tag value: {}".format(parent_run.data.tags.get("version")))
 print("priority tag value: {}".format(parent_run.data.tags.get("priority")))
 print("--")
-
-# Search all child runs with a parent id
-
-# query = "tags.mlflow.parentRunId = '{}'".format(parent_run.info.run_id)
-# results = mlflow.search_runs(experiment_ids=[experiment_id], filter_string=query)
-# print("child runs:")
-# print(results[["run_id", "params.child", "tags.mlflow.runName"]])

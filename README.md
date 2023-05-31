@@ -41,7 +41,7 @@ pytest test_installation.py
 ```
 ## To create a MLFlow server, run the below command
 ```
-mlflow server --backend-store-uri mlruns/  --default-artifact-root mlruns/ --host 127.0.0.1 --port 7000
+mlflow server --backend-store-uri mlruns/  --default-artifact-root mlruns/ --host 127.0.0.1 --port 5000
 ```
 
 ## To run the python script , run the below command
