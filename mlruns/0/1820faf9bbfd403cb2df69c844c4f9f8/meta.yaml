@@ -1,0 +1,15 @@
+artifact_uri: mlruns/0/1820faf9bbfd403cb2df69c844c4f9f8/artifacts
+end_time: 1685512526296
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1820faf9bbfd403cb2df69c844c4f9f8
+run_name: PARENT_RUN
+run_uuid: 1820faf9bbfd403cb2df69c844c4f9f8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685512074156
+status: 3
+tags: []
+user_id: madhu
