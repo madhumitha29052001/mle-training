@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/1/cafc6a09ec0f48f990acc4b31544ce44/artifacts
+end_time: 1685254491339
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: cafc6a09ec0f48f990acc4b31544ce44
+run_name: CHILD_TRAIN_MODELS
+run_uuid: cafc6a09ec0f48f990acc4b31544ce44
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685254036854
+status: 3
+tags: []
+user_id: madhu

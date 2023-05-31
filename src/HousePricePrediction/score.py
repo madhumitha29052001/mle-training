@@ -1,14 +1,15 @@
 import argparse
+import logging
 import os
 import pickle
 
+import mlflow
 import numpy as np
 import pandas as pd
-
-# from configure_logging import configure_logger
+from configure_logging import configure_logger
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-from HousePricePrediction.configure_logging import configure_logger
+# from HousePricePrediction.configure_logging import configure_logger
 
 
 def parse_args():
@@ -26,7 +27,7 @@ def parse_args():
     parser.add_argument(
         "--model_dir",
         type=str,
-        default="/mnt/d/mle-training/artifacts",
+        default="../../artifacts",
         help="Path to the models",
     )
 
@@ -77,14 +78,13 @@ def predict_score(processed_path, model_path):
     X_test_prepared = pd.read_csv(os.path.join(processed_path, "X_test.csv"))
     y_test = pd.read_csv(os.path.join(processed_path, "Y_test.csv"))
 
-    os.chdir(model_path)
-
     # load the model from disk
     for file in os.listdir(model_path):
         if file == ".gitkeep":
             pass
         else:
-            loaded_model = pickle.load(open(file, "rb"))
+            cur_model_path = os.path.join(model_path, file)
+            loaded_model = pickle.load(open(cur_model_path, "rb"))
             final_predictions = loaded_model.predict(X_test_prepared)
             final_mse = mean_squared_error(y_test, final_predictions)
             final_rmse = np.sqrt(final_mse)
@@ -96,17 +96,24 @@ def predict_score(processed_path, model_path):
             logging.info(f"    r2 score: {r2}")
             logging.info(f"    Mean absolute error: {mae}")
 
+            mlflow.log_metric("mse", final_mse)
+            mlflow.log_metric("rmse", final_rmse)
+            mlflow.log_metric("r2", r2)
+            mlflow.log_metric("mae", mae)
 
-if __name__ == "__main__":
+
+def main():
     args = parse_args()
 
     model_path = args.model_dir
-
     processed_path = args.data_dir
-
     log_file_path = args.log_path
-    logging = configure_logger(
+    configure_logger(
         log_file=log_file_path, console=args.no_console_log, log_level=args.log_level
     )
-
+    # print(model_path)
     predict_score(processed_path, model_path)
+
+
+if __name__ == "__main__":
+    main()
