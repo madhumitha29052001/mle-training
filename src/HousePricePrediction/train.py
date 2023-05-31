@@ -3,17 +3,18 @@ import logging
 import os
 import pickle
 
+import mlflow
+import mlflow.sklearn
 import numpy as np
 import pandas as pd
-
-# from configure_logging import configure_logger
+from configure_logging import configure_logger
 from scipy.stats import randint
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from sklearn.tree import DecisionTreeRegressor
 
-from HousePricePrediction.configure_logging import configure_logger
+# from HousePricePrediction.configure_logging import configure_logger
 
 
 def parse_args():
@@ -82,6 +83,8 @@ def train_models(housing_prepared, housing_labels, pkl_path):
     lin_reg = LinearRegression()
     lin_reg.fit(housing_prepared, housing_labels)
 
+    mlflow.sklearn.log_model(lin_reg, "linear_reg_model")
+
     logging.info("Saving the Linear Regression model")
     filename = os.path.join(pkl_path, "linear_regression.pkl")
     pickle.dump(lin_reg, open(filename, "wb"))
@@ -89,6 +92,8 @@ def train_models(housing_prepared, housing_labels, pkl_path):
     logging.info("Building DecisionTreeRegressor model")
     tree_reg = DecisionTreeRegressor(random_state=42)
     tree_reg.fit(housing_prepared, housing_labels)
+
+    mlflow.sklearn.log_model(tree_reg, "DecisionTree_reg_model")
 
     logging.info("Saving the DecisionTreeRegressor model")
     filename = os.path.join(pkl_path, "decision_tree.pkl")
@@ -114,6 +119,10 @@ def train_models(housing_prepared, housing_labels, pkl_path):
         print("RandomSearch_RandomForest_Model", np.sqrt(-mean_score), params)
 
     rnd_search_best_estimator = rnd_search.best_estimator_
+
+    mlflow.sklearn.log_model(
+        rnd_search_best_estimator, "RandomSearch_RandomForest_Model"
+    )
     logging.info("Saving the RandomSearch_RandomForest_Model")
     filename = os.path.join(pkl_path, "random_forest_random_search.pkl")
     pickle.dump(rnd_search_best_estimator, open(filename, "wb"))
@@ -141,6 +150,7 @@ def train_models(housing_prepared, housing_labels, pkl_path):
 
     logging.info("Final model obtained using grid_search.best_estimator_")
     final_model = grid_search.best_estimator_
+    mlflow.sklearn.log_model(final_model, "Final_Model")
 
     logging.info("Saving the final model")
     filename = os.path.join(pkl_path, "final_model.pkl")

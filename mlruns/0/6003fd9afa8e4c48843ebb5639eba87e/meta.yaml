@@ -1,0 +1,15 @@
+artifact_uri: mlruns/0/6003fd9afa8e4c48843ebb5639eba87e/artifacts
+end_time: 1685512526277
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6003fd9afa8e4c48843ebb5639eba87e
+run_name: CHILD_COMPUTE_SCORE
+run_uuid: 6003fd9afa8e4c48843ebb5639eba87e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1685512524673
+status: 3
+tags: []
+user_id: madhu

@@ -3,10 +3,10 @@ import os
 import re
 import tarfile
 
+import mlflow
 import numpy as np
 import pandas as pd
-
-# from configure_logging import configure_logger
+from configure_logging import configure_logger
 from six.moves import urllib  # pyright:ignore
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.compose import ColumnTransformer
@@ -15,7 +15,7 @@ from sklearn.model_selection import StratifiedShuffleSplit, train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-from HousePricePrediction.configure_logging import configure_logger
+# from HousePricePrediction.configure_logging import configure_logger
 
 
 def parse_args():
@@ -27,7 +27,9 @@ def parse_args():
         Returns the arguments that are added in the argument parser
 
     """
-    parser = argparse.ArgumentParser(description="Script to download and transform data")
+    parser = argparse.ArgumentParser(
+        description="Script to download and transform data"
+    )
     parser.add_argument(
         "--download_dir",
         type=str,
@@ -116,7 +118,9 @@ class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
         population_per_household = X[:, population_ix] / X[:, households_ix]
         if self.add_bedrooms_per_room:
             bedrooms_per_room = X[:, bedrooms_ix] / X[:, rooms_ix]
-            return np.c_[X, rooms_per_household, population_per_household, bedrooms_per_room]
+            return np.c_[
+                X, rooms_per_household, population_per_household, bedrooms_per_room
+            ]
 
         else:
             return np.c_[X, rooms_per_household, population_per_household]
@@ -187,7 +191,8 @@ def get_feature_names_from_column_transformer(col_trans):
             elif isinstance(transformer, SimpleImputer) and transformer.add_indicator:
                 missing_indicator_indices = transformer.indicator_.features_
                 missing_indicators = [
-                    raw_col_name[idx] + "_missing_flag" for idx in missing_indicator_indices
+                    raw_col_name[idx] + "_missing_flag"
+                    for idx in missing_indicator_indices
                 ]
 
                 names = raw_col_name + missing_indicators
@@ -259,7 +264,9 @@ def transform_data(data_folder, output_folder, args):
             "Random": income_cat_proportions(test_set),
         }
     ).sort_index()
-    compare_props["Rand. %error"] = 100 * compare_props["Random"] / compare_props["Overall"] - 100
+    compare_props["Rand. %error"] = (
+        100 * compare_props["Random"] / compare_props["Overall"] - 100
+    )
     compare_props["Strat. %error"] = (
         100 * compare_props["Stratified"] / compare_props["Overall"] - 100
     )
@@ -278,7 +285,9 @@ def transform_data(data_folder, output_folder, args):
     housing["bedrooms_per_room"] = housing["total_bedrooms"] / housing["total_rooms"]
     housing["population_per_household"] = housing["population"] / housing["households"]
 
-    housing = strat_train_set.drop("median_house_value", axis=1)  # drop labels for training set
+    housing = strat_train_set.drop(
+        "median_house_value", axis=1
+    )  # drop labels for training set
     housing_labels = strat_train_set["median_house_value"].copy()
     housing_num = housing.drop("ocean_proximity", axis=1)
 
@@ -307,7 +316,9 @@ def transform_data(data_folder, output_folder, args):
 
     column_names = get_feature_names_from_column_transformer(full_pipeline)
 
-    house_prep = (pd.DataFrame(housing_prepared_numpyarray[:, :8], columns=column_names[:8])).join(
+    house_prep = (
+        pd.DataFrame(housing_prepared_numpyarray[:, :8], columns=column_names[:8])
+    ).join(
         (pd.DataFrame(housing_prepared_numpyarray[:, 8:11], columns=cols)).join(
             pd.DataFrame(housing_prepared_numpyarray[:, 11:], columns=column_names[8:])
         )
@@ -316,15 +327,21 @@ def transform_data(data_folder, output_folder, args):
     for i in range(len(house_prep.columns)):
         if "num" in house_prep.columns[i]:
             house_prep.rename(
-                columns={house_prep.columns[i]: re.sub("num_", "", house_prep.columns[i])},
+                columns={
+                    house_prep.columns[i]: re.sub("num_", "", house_prep.columns[i])
+                },
                 inplace=True,
             )
 
     housing_prepared = house_prep
 
     logger.info("Saving train data....")
+
     housing_prepared.to_csv(os.path.join(output_folder, "X_train.csv"), index=False)
     housing_labels.to_csv(os.path.join(output_folder, "Y_train.csv"), index=False)
+
+    mlflow.log_artifact(os.path.join(output_folder, "X_train.csv"))
+    mlflow.log_artifact(os.path.join(output_folder, "Y_train.csv"))
 
     X_test = strat_test_set.drop("median_house_value", axis=1)
     y_test = strat_test_set["median_house_value"].copy()
@@ -351,6 +368,9 @@ def transform_data(data_folder, output_folder, args):
 
     X_test_prepared.to_csv(os.path.join(output_folder, "X_test.csv"), index=False)
     y_test.to_csv(os.path.join(output_folder, "Y_test.csv"), index=False)
+
+    mlflow.log_artifact(os.path.join(output_folder, "X_test.csv"))
+    mlflow.log_artifact(os.path.join(output_folder, "Y_test.csv"))
 
 
 def main():

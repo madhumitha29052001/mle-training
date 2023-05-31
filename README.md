@@ -39,3 +39,12 @@ pip install dist/HousePricePrediction-0.3-py3-none-any.whl
 %cd tests/functional_tests/
 pytest test_installation.py
 ```
+## To create a MLFlow server, run the below command
+```
+mlflow server --backend-store-uri mlruns/  --default-artifact-root mlruns/ --host 127.0.0.1 --port 5000
+```
+
+## To run the python script , run the below command
+```
+python src/HousePricePrediction/mlflow_run.py
+```
