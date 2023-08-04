@@ -9,5 +9,6 @@ HousePricePrediction.egg-info/top_level.txt
 src/HousePricePrediction/__init__.py
 src/HousePricePrediction/configure_logging.py
 src/HousePricePrediction/ingest_data.py
+src/HousePricePrediction/mlflow_run.py
 src/HousePricePrediction/score.py
 src/HousePricePrediction/train.py
